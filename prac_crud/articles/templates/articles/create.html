@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Login</h1>
+    <hr>
+
+    <form action="{% url 'articles:create'%}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% comment %} <label for="">ID : </label>
+        <input type="text" id = "title" name = "title" value = "ID를 입력하세요">
+        <br>
+        <br>
+        <label for="">PW : </label>
+        <input type="text" id = "content" name = "content" value = "PW를 입력하세요">
+        <br>
+        <br> {% endcomment %}
+        {{form.as_p}}
+        {% comment %} <button>
+            <a href="{% url 'articles:create' %}" style="text-decoration:none; color: black;">로그인</a>
+        </button> {% endcomment %}
+        <input type="submit">
+    </form>
+    <br>
+    <button>
+        <a href="{% url 'articles:index' %}" style="text-decoration:none; color: black;">돌아가기</a>
+    </button>
+    <br>
+{% endblock content %}
+

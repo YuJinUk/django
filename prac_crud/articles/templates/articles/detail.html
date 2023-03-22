@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if pkid.image %}
+        <img src="{{pkid.image.url}}" alt="">
+    {% endif %}
+    <h1>DETAIL</h1>
+    <hr>
+    <p>ID : {{pkid.title}}</p>
+    <p>Password : {{pkid.content}}</p>
+    <p>생성시각 : {{pkid.created_at}}</p>
+    <p>수정시각 : {{pkid.updated_at}}</p>
+    <a href="{% url 'articles:dellete' pk%}">삭제하기</a>
+    <a href="{% url 'articles:index' %}">목록보기</a>
+    <a href="{% url 'articles:update' pk %}">수정하기</a>
+{% endblock content %}
+

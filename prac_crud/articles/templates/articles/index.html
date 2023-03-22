@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Log</h1>
+    <form action="{% url 'articles:create' %}">
+        <input type="submit" value = 'Login 하러가기'>
+    </form>
+    <hr>
+    {% for article in articles %}
+        <p>order : {{article.id}}</p>
+        <a href="{% url 'articles:detail' article.pk %}">
+        <p>ID : {{article.title}}</p>
+        </a>
+        <p>password : ****</p>
+        <br>
+        <form action="{% url 'articles:dellete' article.pk %}">
+            <input type="submit" value = '로그 삭제'>
+        </form>
+        <hr>
+    {% endfor %}
+{% endblock content %}
+
