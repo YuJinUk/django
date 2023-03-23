@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todos</title>
+</head>
+<body>
+    <h1>Todos</h1>
+    안녕하세요 {{ user }}님
+    <a href="{% url 'accounts:login' %}">로그인</a>
+    <a href="{% url 'accounts:logout' %}">로그아웃</a>
+    <a href="{% url 'accounts:signup' %}">회원가입</a>
+    
+    {% if request.user.is_authenticated %}
+        <form action="{% url 'create' %}" method = "POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value = '등록'>
+        </form>
+        <div>
+            <ul>
+    
+            </ul>
+            {% for todo in todo_list %}
+            <li> {{todo.task}}
+            <br>
+            <br>
+            완료 여부 <a href="{% url 'done' todo.pk %}">{{todo.isCompleted}}</a>
+            <br>
+            <br>
+            <a href="{% url 'update' todo.pk %}">수정하기</a>
+            <form action="{% url 'delete' todo.pk %}" method = "POST">
+                {% csrf_token %}
+                <input type="submit" value = '삭제하기'>
+            </form>
+            <br>
+            <br>
+            </li>
+            {% endfor %}
+        </div>
+    {% else %}
+    <br>
+        로그인 하십쇼
+    <br>
+        로그인 하십쇼
+    <br>
+        로그인 하십쇼
+    <br>
+        로그인 하십쇼
+    <br>
+        로그인 하십쇼
+    <br>
+        로그인 하십쇼
+    <br>
+        로그인 하십쇼
+    <br>
+        로그인 하십쇼
+    <br>
+        로그인 하십쇼
+    <br>
+        로그인 하십쇼
+    <br>
+        로그인 하십쇼
+    <br>
+        로그인 하십쇼
+    {% endif %}
+
+    
+
+</body>
+</html>

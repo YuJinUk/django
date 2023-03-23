@@ -12,8 +12,15 @@
 </head>
 <body>
     <img src="{% static 'dog.png' %}" alt="">
+    <a href="{% url 'accounts:signup' %}">Sign up</a>
+    <form action="{% url 'accounts:delete' %}" method = "POST">
+        {% csrf_token %}
+        <input type="submit" value = "delete">
+    </form>
     <a href="{% url 'accounts:login' %}">Login page</a>
     <a href="{% url 'accounts:logout' %}">Logout page</a>
+    <a href="{% url 'accounts:update' %}">modify</a>
+    
     <h3>안녕하세요 {{ user }} 님!</h3>
     <hr>
     <br>
